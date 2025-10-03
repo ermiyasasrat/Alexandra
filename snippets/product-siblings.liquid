@@ -1,17 +1,19 @@
 {%- assign metafields = metafields | default: false -%}
 {%- assign show_siblings = false -%}
 {%- assign sibs_collection = collections[block.settings.siblings_collection].products -%}
-{%- assign sibling_color = block.settings.sibling_color 
-  | default: product.metafields.theme.sibling_color.value 
-  | default: product.metafields.theme.sibling_colour.value 
-  | default: product.metafields.theme.siblings_color.value 
-  | default: product.metafields.theme.siblings_colour.value 
-  | default: product.metafields.theme.siblings_colors.value 
-  | default: product.metafields.theme.siblings_colours.value -%}
+{%- assign sibling_color = block.settings.sibling_color
+  | default: product.metafields.theme.sibling_color.value
+  | default: product.metafields.theme.sibling_colour.value
+  | default: product.metafields.theme.siblings_color.value
+  | default: product.metafields.theme.siblings_colour.value
+  | default: product.metafields.theme.siblings_colors.value
+  | default: product.metafields.theme.siblings_colours.value
+-%}
 
 {%- if metafields -%}
-  {%- assign sibs_collection = product.metafields.theme.sibling_products.value 
-    | default: collections[product.metafields.theme.siblings.value].products -%}
+  {%- assign sibs_collection = product.metafields.theme.sibling_products.value
+    | default: collections[product.metafields.theme.siblings.value].products
+  -%}
 {%- endif -%}
 
 {%- if metafields and sibs_collection != blank -%}
@@ -27,11 +29,19 @@
     {%- assign title_down = product.title | downcase -%}
     {%- assign sibling_down = sibling_color | downcase -%}
     {%- unless title_down contains sibling_down -%}
-      <input type="hidden" form="{{ product_form_id }}" name="properties[{{ 'products.product.siblings.label' | t }}]" value="{{ sibling_color }}">
+      <input
+        type="hidden"
+        form="{{ product_form_id }}"
+        name="properties[{{ 'products.product.siblings.label' | t }}]"
+        value="{{ sibling_color }}"
+      >
     {%- endunless -%}
 
     {%- if sibs_collection -%}
-      <fieldset class="product-form__input product-form__input--siblings product-form__input--siblings--{{ color_picker_size }}" style="--siblings-margin:{{ block.settings.margin_bottom | append: 'px' }}">
+      <fieldset
+        class="product-form__input product-form__input--siblings product-form__input--siblings--{{ color_picker_size }}"
+        style="--siblings-margin:{{ block.settings.margin_bottom | append: 'px' }}"
+      >
         <div class="form__label">
           {{ 'products.product.siblings.label' | t }}:
           {% if sibling_color != blank %}
@@ -46,7 +56,8 @@
             | default: sib_product.metafields.theme.siblings_colour.value
             | default: sib_product.metafields.theme.siblings_colors.value
             | default: sib_product.metafields.theme.siblings_colours.value
-            | strip -%}
+            | strip
+          -%}
 
           {%- assign color_left = '' -%}
           {%- assign color_right = '' -%}
@@ -56,37 +67,37 @@
             {%- assign left_title = parts[0] | strip -%}
             {%- assign right_title = parts[1] | strip -%}
 
-            {%- assign left_metal = shop.metaobjects['metal'].values | where: 'title', left_title | first -%}
+            {%- assign left_metal = shop.metaobjects.metal.values | where: 'title', left_title | first -%}
             {%- if left_metal and left_metal.colour -%}
               {%- assign color_left = left_metal.colour -%}
             {%- endif -%}
 
-            {%- assign right_metal = shop.metaobjects['metal'].values | where: 'title', right_title | first -%}
+            {%- assign right_metal = shop.metaobjects.metal.values | where: 'title', right_title | first -%}
             {%- if right_metal and right_metal.colour -%}
               {%- assign color_right = right_metal.colour -%}
             {%- endif -%}
           {%- else -%}
-            {%- assign single_metal = shop.metaobjects['metal'].values | where: 'title', sibling_color_value | first -%}
+            {%- assign single_metal = shop.metaobjects.metal.values | where: 'title', sibling_color_value | first -%}
             {%- if single_metal and single_metal.colour -%}
               {%- assign color_left = single_metal.colour -%}
             {%- endif -%}
           {%- endif -%}
 
           <label
-           class="{% if sib_product.handle == product.handle %}active{% endif %}{% if sib_product.available == false %} sold-out{% endif %}"
-           {% if color_left != '' and color_right != '' %}
-            style="background: linear-gradient(135deg, {{ color_left }} 50%, {{ color_right }} 50%);"
-           {% elsif color_left != '' %}
+            class="{% if sib_product.handle == product.handle %}active{% endif %}{% if sib_product.available == false %} sold-out{% endif %}"
+            {% if color_left != '' and color_right != '' %}
+              style="background: linear-gradient(135deg, {{ color_left }} 50%, {{ color_right }} 50%);"
+            {% elsif color_left != '' %}
               style="background-color: {{ color_left }};"
             {% endif %}
-           >
-          <a
-           href="{{ sib_product.url }}"
-           title="{{ sibling_color_value | strip | escape }}"
-           aria-label="{{ sibling_color_value | strip | escape }}"
-           data-swatch-title="{{ sibling_color_value | strip | escape }}"
-          ></a>
-         </label>
+          >
+            <a
+              href="{{ sib_product.url }}"
+              title="{{ sibling_color_value | strip | escape }}"
+              aria-label="{{ sibling_color_value | strip | escape }}"
+              data-swatch-title="{{ sibling_color_value | strip | escape }}"
+            ></a>
+          </label>
         {%- endfor -%}
       </fieldset>
     {%- endif -%}
