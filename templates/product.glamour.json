@@ -1,6 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "breadcrumbs": { "type": "breadcrumbs", "settings": {} },
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
     "main-product": {
       "type": "main-product",
       "blocks": {
@@ -22,8 +34,8 @@
         "siblings_LnKEEg": {
           "type": "siblings",
           "settings": {
-            "siblings_collection": "{{ product.metafields.theme.siblings.value }}",
-            "sibling_color": "{{ product.metafields.theme.sibling_color.value }}",
+            "siblings_collection": "",
+            "sibling_color": "",
             "color_picker_size": "regular",
             "margin_bottom": 20
           }
@@ -144,11 +156,16 @@
       "blocks": {
         "template--18432547127579__dde9ae02-7832-4b5d-82cb-dce4d766f427-1681377090c56acdec-0": {
           "type": "subheading",
-          "settings": { "text": "Something different" }
+          "settings": {
+            "text": "Something different"
+          }
         },
         "template--18432547127579__dde9ae02-7832-4b5d-82cb-dce4d766f427-1681377090c56acdec-1": {
           "type": "heading",
-          "settings": { "text": "Because you deserve it", "size": "h1" }
+          "settings": {
+            "text": "Because you deserve it",
+            "size": "h1"
+          }
         },
         "template--18432547127579__dde9ae02-7832-4b5d-82cb-dce4d766f427-1681377090c56acdec-2": {
           "type": "text",
@@ -255,7 +272,10 @@
       "blocks": {
         "template--18432547127579__bcb48e2d-c55f-4787-abf4-17b850e5bb8a-16813710817e2ce3bd-1": {
           "type": "heading",
-          "settings": { "text": "Inspire your style", "heading_size": "h1" }
+          "settings": {
+            "text": "Inspire your style",
+            "heading_size": "h1"
+          }
         },
         "template--18432547127579__bcb48e2d-c55f-4787-abf4-17b850e5bb8a-16813710817e2ce3bd-2": {
           "type": "text",
@@ -297,7 +317,10 @@
       "blocks": {
         "9aee3b19-b258-4ad3-aea6-151a5da4971b": {
           "type": "heading",
-          "settings": { "text": "✾ ✾ ✾", "size": "h4" }
+          "settings": {
+            "text": "✾ ✾ ✾",
+            "size": "h4"
+          }
         },
         "template--18432547127579__5c7cec52-f78f-4e08-8c51-0ff3f0135e45-1681377090c56acdec-1": {
           "type": "heading",
@@ -308,7 +331,10 @@
         },
         "32e10985-5358-4031-8606-f99271cd4f8d": {
           "type": "text-button",
-          "settings": { "link_label": "LEARN MORE", "link": "" }
+          "settings": {
+            "link_label": "LEARN MORE",
+            "link": ""
+          }
         }
       },
       "block_order": [
