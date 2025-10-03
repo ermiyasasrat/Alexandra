@@ -10,7 +10,9 @@
 {%- if siblings_collection_handle == blank -%}
   {%- assign siblings_collection_handle = product.metafields.theme.siblings.value -%}
   {%- if debug_mode and siblings_collection_handle == blank -%}
-    {%- assign debug_messages = debug_messages | append: 'Missing siblings collection handle in block settings and product.metafields.theme.siblings. ' -%}
+    {%- assign debug_messages = debug_messages
+      | append: 'Missing siblings collection handle in block settings and product.metafields.theme.siblings. '
+    -%}
   {%- endif -%}
 {%- endif -%}
 
@@ -19,20 +21,24 @@
 {%- comment -%} Get sibling color from block settings or metafields {%- endcomment -%}
 {%- assign sibling_color = block.settings.sibling_color -%}
 {%- if sibling_color == blank -%}
-  {%- assign sibling_color = product.metafields.theme.sibling_color.value 
-    | default: product.metafields.theme.sibling_colour.value 
-    | default: product.metafields.theme.siblings_color.value 
-    | default: product.metafields.theme.siblings_colour.value 
-    | default: product.metafields.theme.siblings_colors.value 
-    | default: product.metafields.theme.siblings_colours.value -%}
+  {%- assign sibling_color = product.metafields.theme.sibling_color.value
+    | default: product.metafields.theme.sibling_colour.value
+    | default: product.metafields.theme.siblings_color.value
+    | default: product.metafields.theme.siblings_colour.value
+    | default: product.metafields.theme.siblings_colors.value
+    | default: product.metafields.theme.siblings_colours.value
+  -%}
   {%- if debug_mode and sibling_color == blank -%}
-    {%- assign debug_messages = debug_messages | append: 'Missing sibling color in block settings and product metafields (theme.sibling_color, theme.sibling_colour, etc.). ' -%}
+    {%- assign debug_messages = debug_messages
+      | append: 'Missing sibling color in block settings and product metafields (theme.sibling_color, theme.sibling_colour, etc.). '
+    -%}
   {%- endif -%}
 {%- endif -%}
 
 {%- if metafields -%}
-  {%- assign sibs_collection = product.metafields.theme.sibling_products.value 
-    | default: collections[product.metafields.theme.siblings.value].products -%}
+  {%- assign sibs_collection = product.metafields.theme.sibling_products.value
+    | default: collections[product.metafields.theme.siblings.value].products
+  -%}
 {%- endif -%}
 
 {%- comment -%} Check if we should show siblings {%- endcomment -%}
@@ -53,11 +59,19 @@
     {%- assign title_down = product.title | downcase -%}
     {%- assign sibling_down = sibling_color | downcase -%}
     {%- unless title_down contains sibling_down -%}
-      <input type="hidden" form="{{ product_form_id }}" name="properties[{{ 'products.product.siblings.label' | t }}]" value="{{ sibling_color }}">
+      <input
+        type="hidden"
+        form="{{ product_form_id }}"
+        name="properties[{{ 'products.product.siblings.label' | t }}]"
+        value="{{ sibling_color }}"
+      >
     {%- endunless -%}
 
     {%- if sibs_collection -%}
-      <fieldset class="product-form__input product-form__input--siblings product-form__input--siblings--{{ color_picker_size }}" style="--siblings-margin:{{ block.settings.margin_bottom | append: 'px' }}">
+      <fieldset
+        class="product-form__input product-form__input--siblings product-form__input--siblings--{{ color_picker_size }}"
+        style="--siblings-margin:{{ block.settings.margin_bottom | append: 'px' }}"
+      >
         <div class="form__label">
           {{ 'products.product.siblings.label' | t }}:
           {% if sibling_color != blank %}
@@ -74,59 +88,59 @@
             | default: sib_product.metafields.theme.siblings_colour.value
             | default: sib_product.metafields.theme.siblings_colors.value
             | default: sib_product.metafields.theme.siblings_colours.value
-            | strip -%}
-          
+            | strip
+          -%}
+
           {%- if sibling_color_value != blank -%}
             {%- assign products_with_color = products_with_color | plus: 1 -%}
           {%- elsif debug_mode -%}
             {%- assign products_without_color = products_without_color | plus: 1 -%}
           {%- endif -%}
-          
+
           {%- if sibling_color_value != blank -%}
+            {%- assign color_left = '' -%}
+            {%- assign color_right = '' -%}
 
-          {%- assign color_left = '' -%}
-          {%- assign color_right = '' -%}
+            {%- if sibling_color_value contains '&' -%}
+              {%- assign parts = sibling_color_value | split: '&' -%}
+              {%- assign left_title = parts[0] | strip -%}
+              {%- assign right_title = parts[1] | strip -%}
 
-          {%- if sibling_color_value contains '&' -%}
-            {%- assign parts = sibling_color_value | split: '&' -%}
-            {%- assign left_title = parts[0] | strip -%}
-            {%- assign right_title = parts[1] | strip -%}
+              {%- assign left_metal = shop.metaobjects.metal.values | where: 'title', left_title | first -%}
+              {%- if left_metal and left_metal.colour -%}
+                {%- assign color_left = left_metal.colour -%}
+              {%- endif -%}
 
-            {%- assign left_metal = shop.metaobjects['metal'].values | where: 'title', left_title | first -%}
-            {%- if left_metal and left_metal.colour -%}
-              {%- assign color_left = left_metal.colour -%}
+              {%- assign right_metal = shop.metaobjects.metal.values | where: 'title', right_title | first -%}
+              {%- if right_metal and right_metal.colour -%}
+                {%- assign color_right = right_metal.colour -%}
+              {%- endif -%}
+            {%- else -%}
+              {%- assign single_metal = shop.metaobjects.metal.values | where: 'title', sibling_color_value | first -%}
+              {%- if single_metal and single_metal.colour -%}
+                {%- assign color_left = single_metal.colour -%}
+              {%- endif -%}
             {%- endif -%}
 
-            {%- assign right_metal = shop.metaobjects['metal'].values | where: 'title', right_title | first -%}
-            {%- if right_metal and right_metal.colour -%}
-              {%- assign color_right = right_metal.colour -%}
-            {%- endif -%}
-          {%- else -%}
-            {%- assign single_metal = shop.metaobjects['metal'].values | where: 'title', sibling_color_value | first -%}
-            {%- if single_metal and single_metal.colour -%}
-              {%- assign color_left = single_metal.colour -%}
-            {%- endif -%}
-          {%- endif -%}
-
-          <label
-           class="{% if sib_product.handle == product.handle %}active{% endif %}{% if sib_product.available == false %} sold-out{% endif %}"
-           {% if color_left != '' and color_right != '' %}
-            style="background: linear-gradient(135deg, {{ color_left }} 50%, {{ color_right }} 50%);"
-           {% elsif color_left != '' %}
-              style="background-color: {{ color_left }};"
-            {% endif %}
-           >
-          <a
-           href="{{ sib_product.url }}"
-           title="{{ sibling_color_value | strip | escape }}"
-           aria-label="{{ sibling_color_value | strip | escape }}"
-           data-swatch-title="{{ sibling_color_value | strip | escape }}"
-          ></a>
-         </label>
+            <label
+              class="{% if sib_product.handle == product.handle %}active{% endif %}{% if sib_product.available == false %} sold-out{% endif %}"
+              {% if color_left != '' and color_right != '' %}
+                style="background: linear-gradient(135deg, {{ color_left }} 50%, {{ color_right }} 50%);"
+              {% elsif color_left != '' %}
+                style="background-color: {{ color_left }};"
+              {% endif %}
+            >
+              <a
+                href="{{ sib_product.url }}"
+                title="{{ sibling_color_value | strip | escape }}"
+                aria-label="{{ sibling_color_value | strip | escape }}"
+                data-swatch-title="{{ sibling_color_value | strip | escape }}"
+              ></a>
+            </label>
           {%- endif -%}
         {%- endfor -%}
       </fieldset>
-      
+
       {%- assign show_debug = false -%}
       {%- if debug_mode -%}
         {%- if products_without_color > 0 or products_with_color == 0 -%}
@@ -134,13 +148,17 @@
         {%- endif -%}
       {%- endif -%}
       {%- if show_debug -%}
-        <div class="product-siblings-debug" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; margin: 10px 0; border-radius: 3px; color: #856404; font-size: 12px;">
+        <div
+          class="product-siblings-debug"
+          style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; margin: 10px 0; border-radius: 3px; color: #856404; font-size: 12px;"
+        >
           <strong>⚠️ Siblings Debug Info:</strong><br>
           {%- if products_with_color == 0 -%}
             No products in the siblings collection have color metafields set.<br>
             No swatches will be displayed.<br>
           {%- else -%}
-            {{ products_without_color }} out of {{ sibs_collection.size }} product(s) in the siblings collection don't have color metafields set.<br>
+            {{ products_without_color }} out of {{ sibs_collection.size }} product(s) in the siblings collection don't
+            have color metafields set.<br>
             Only {{ products_with_color }} product(s) will display as swatches.<br>
           {%- endif -%}
           <strong>To fix:</strong> Add theme.sibling_color metafield to all products in the siblings collection.
@@ -151,15 +169,21 @@
 {%- elsif request.design_mode -%}
   <div {{ block.shopify_attributes }}>
     {%- if debug_messages != blank -%}
-      <div class="product-siblings-debug" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; margin: 10px 0; border-radius: 5px; color: #856404; font-size: 14px;">
+      <div
+        class="product-siblings-debug"
+        style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; margin: 10px 0; border-radius: 5px; color: #856404; font-size: 14px;"
+      >
         <strong>🔧 Siblings Debug Info (Design Mode Only):</strong><br>
         {{ debug_messages }}
-        <br><br>
+        <br>
+        <br>
         <strong>Current Settings:</strong><br>
         • Block siblings_collection: "{{ block.settings.siblings_collection | default: '(empty)' }}"<br>
         • Block sibling_color: "{{ block.settings.sibling_color | default: '(empty)' }}"<br>
         • Product metafield theme.siblings: "{{ product.metafields.theme.siblings.value | default: '(not set)' }}"<br>
-        • Product metafield theme.sibling_color: "{{ product.metafields.theme.sibling_color.value | default: '(not set)' }}"<br>
+        • Product metafield theme.sibling_color: "
+        {{- product.metafields.theme.sibling_color.value | default: '(not set)' -}}
+        "<br>
         <br>
         <strong>To fix:</strong><br>
         1. Set the "Product siblings collection handle" in block settings OR ensure product has theme.siblings metafield<br>
