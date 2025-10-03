@@ -1,5 +1,7 @@
 {%- if settings.show_products_swatches -%}
 	{%- assign swatch_style = settings.swatch_style -%}
+	{%- assign debug_mode = request.design_mode -%}
+	{%- assign debug_messages = '' -%}
 	{%- unless product.has_only_default_variant -%}
 		{%- for option in product.options_with_values -%}
 			{%- liquid
@@ -111,4 +113,46 @@
 			{%- endif -%}
 		{%- endfor -%}
 	{%- endunless -%}
+	{%- if debug_mode -%}
+		{%- assign has_color_options = false -%}
+		{%- for option in product.options_with_values -%}
+			{%- liquid
+				assign option_name = option.name | downcase | escape 
+				assign color_swatch = false
+
+				if option_name contains 'color' or option_name contains 'colour' or option_name contains 'couleur' or option_name contains 'farbe'
+					assign color_swatch = true
+					assign has_color_options = true
+				endif
+				
+				# Additional swatch variant options set inside theme settings
+				assign color_swatches_variant_option = settings.color_swatches_variant_option | downcase | split: ', '
+
+				if color_swatches_variant_option contains option_name
+					assign color_swatch = true
+					assign has_color_options = true
+				endif
+			-%}
+		{%- endfor -%}
+		{%- unless has_color_options -%}
+			<div class="product-swatches-debug" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; margin: 5px 0; border-radius: 3px; color: #856404; font-size: 12px;">
+				<strong>🎨 Swatches Debug (Design Mode Only):</strong><br>
+				No color options found for this product.<br>
+				<strong>Available options:</strong>
+				{%- for option in product.options_with_values -%}
+					{{ option.name }}{% unless forloop.last %}, {% endunless %}
+				{%- else -%}
+					None (single variant product)
+				{%- endfor -%}<br>
+				<strong>Color swatch variant setting:</strong> "{{ settings.color_swatches_variant_option | default: '(not set)' }}"<br>
+				<strong>To show swatches:</strong> Add a variant option containing "color" or add the option name to theme settings > Color swatches > Variant option for swatches
+			</div>
+		{%- endunless -%}
+	{%- endif -%}
+{%- elsif request.design_mode -%}
+	<div class="product-swatches-debug" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; margin: 5px 0; border-radius: 3px; color: #856404; font-size: 12px;">
+		<strong>🎨 Swatches Debug (Design Mode Only):</strong><br>
+		Product swatches are disabled in theme settings.<br>
+		<strong>To enable:</strong> Go to Theme settings > Products > Show color swatches
+	</div>
 {%- endif -%}
