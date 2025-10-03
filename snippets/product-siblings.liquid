@@ -1,61 +1,23 @@
 {%- assign metafields = metafields | default: false -%}
 {%- assign show_siblings = false -%}
+{%- assign sibs_collection = collections[block.settings.siblings_collection].products -%}
+{%- assign sibling_color = block.settings.sibling_color 
+  | default: product.metafields.theme.sibling_color.value 
+  | default: product.metafields.theme.sibling_colour.value 
+  | default: product.metafields.theme.siblings_color.value 
+  | default: product.metafields.theme.siblings_colour.value 
+  | default: product.metafields.theme.siblings_colors.value 
+  | default: product.metafields.theme.siblings_colours.value -%}
 
-{%- comment -%} Get siblings collection from block settings or metafields {%- endcomment -%}
-{%- assign sibs_collection = blank -%}
-{%- assign collection_handle = blank -%}
-{%- if block.settings.siblings_collection != blank -%}
-  {%- assign collection_handle = block.settings.siblings_collection -%}
-  {%- if collections[collection_handle] != blank -%}
-    {%- assign sibs_collection = collections[collection_handle].products -%}
-  {%- endif -%}
-{%- elsif product.metafields.theme.siblings.value != blank -%}
-  {%- assign collection_handle = product.metafields.theme.siblings.value -%}
-  {%- if collections[collection_handle] != blank -%}
-    {%- assign sibs_collection = collections[collection_handle].products -%}
-  {%- endif -%}
-{%- elsif product.metafields.theme.sibling_products.value != blank -%}
-  {%- assign sibs_collection = product.metafields.theme.sibling_products.value -%}
+{%- if metafields -%}
+  {%- assign sibs_collection = product.metafields.theme.sibling_products.value 
+    | default: collections[product.metafields.theme.siblings.value].products -%}
 {%- endif -%}
 
-{%- comment -%} Get sibling color from block settings or metafields {%- endcomment -%}
-{%- assign sibling_color = block.settings.sibling_color
-  | default: product.metafields.theme.sibling_color.value
-  | default: product.metafields.theme.sibling_colour.value
-  | default: product.metafields.theme.siblings_color.value
-  | default: product.metafields.theme.siblings_colour.value
-  | default: product.metafields.theme.siblings_colors.value
-  | default: product.metafields.theme.siblings_colours.value
--%}
-
-{%- comment -%} Show siblings if we have a collection with products {%- endcomment -%}
-{%- if collection_handle != blank and collections[collection_handle] != blank and sibs_collection.size > 0 -%}
-  {%- comment -%} Count products with valid color metafields {%- endcomment -%}
-  {%- assign valid_siblings_count = 0 -%}
-  {%- for sib_product in sibs_collection limit: 50 -%}
-    {%- assign test_color = sib_product.metafields.theme.sibling_color.value
-      | default: sib_product.metafields.theme.sibling_colour.value
-      | default: sib_product.metafields.theme.siblings_color.value
-      | default: sib_product.metafields.theme.siblings_colour.value
-      | default: sib_product.metafields.theme.siblings_colors.value
-      | default: sib_product.metafields.theme.siblings_colours.value
-    -%}
-    {%- if test_color != blank -%}
-      {%- assign valid_siblings_count = valid_siblings_count | plus: 1 -%}
-    {%- endif -%}
-  {%- endfor -%}
-<<<<<<< HEAD
-
-  {%- comment -%} Show if we have at least one product with color info {%- endcomment -%}
-=======
-  
-  {%- comment -%} Show if we have at least one product with color info, or if in design mode show anyway for debugging {%- endcomment -%}
->>>>>>> dd074934959a39438390be0753d0fdf2087827c0
-  {%- if valid_siblings_count > 0 -%}
-    {%- assign show_siblings = true -%}
-  {%- elsif request.design_mode and sibs_collection.size > 0 -%}
-    {%- assign show_siblings = true -%}
-  {%- endif -%}
+{%- if metafields and sibs_collection != blank -%}
+  {%- assign show_siblings = true -%}
+{%- elsif metafields == false and sibs_collection.size > 0 -%}
+  {%- assign show_siblings = true -%}
 {%- endif -%}
 
 {%- assign color_picker_size = block.settings.color_picker_size | default: 'regular' -%}
@@ -65,19 +27,11 @@
     {%- assign title_down = product.title | downcase -%}
     {%- assign sibling_down = sibling_color | downcase -%}
     {%- unless title_down contains sibling_down -%}
-      <input
-        type="hidden"
-        form="{{ product_form_id }}"
-        name="properties[{{ 'products.product.siblings.label' | t }}]"
-        value="{{ sibling_color }}"
-      >
+      <input type="hidden" form="{{ product_form_id }}" name="properties[{{ 'products.product.siblings.label' | t }}]" value="{{ sibling_color }}">
     {%- endunless -%}
 
     {%- if sibs_collection -%}
-      <fieldset
-        class="product-form__input product-form__input--siblings product-form__input--siblings--{{ color_picker_size }}"
-        style="--siblings-margin:{{ block.settings.margin_bottom | append: 'px' }}"
-      >
+      <fieldset class="product-form__input product-form__input--siblings product-form__input--siblings--{{ color_picker_size }}" style="--siblings-margin:{{ block.settings.margin_bottom | append: 'px' }}">
         <div class="form__label">
           {{ 'products.product.siblings.label' | t }}:
           {% if sibling_color != blank %}
@@ -92,129 +46,51 @@
             | default: sib_product.metafields.theme.siblings_colour.value
             | default: sib_product.metafields.theme.siblings_colors.value
             | default: sib_product.metafields.theme.siblings_colours.value
-            | strip
-          -%}
-
-          {%- comment -%} Skip products without color information {%- endcomment -%}
-          {%- if sibling_color_value == blank -%}
-            {%- continue -%}
-          {%- endif -%}
+            | strip -%}
 
           {%- assign color_left = '' -%}
           {%- assign color_right = '' -%}
-          {%- assign has_swatch_color = false -%}
 
-          {%- comment -%} Handle dual colors separated by & {%- endcomment -%}
           {%- if sibling_color_value contains '&' -%}
             {%- assign parts = sibling_color_value | split: '&' -%}
             {%- assign left_title = parts[0] | strip -%}
             {%- assign right_title = parts[1] | strip -%}
 
-            {%- comment -%} Try to get colors from metaobjects first {%- endcomment -%}
-            {%- if shop.metaobjects.metal -%}
-              {%- assign left_metal = shop.metaobjects.metal.values | where: 'title', left_title | first -%}
-              {%- if left_metal and left_metal.colour -%}
-                {%- assign color_left = left_metal.colour -%}
-                {%- assign has_swatch_color = true -%}
-              {%- endif -%}
-
-              {%- assign right_metal = shop.metaobjects.metal.values | where: 'title', right_title | first -%}
-              {%- if right_metal and right_metal.colour -%}
-                {%- assign color_right = right_metal.colour -%}
-                {%- assign has_swatch_color = true -%}
-              {%- endif -%}
+            {%- assign left_metal = shop.metaobjects['metal'].values | where: 'title', left_title | first -%}
+            {%- if left_metal and left_metal.colour -%}
+              {%- assign color_left = left_metal.colour -%}
             {%- endif -%}
 
-            {%- comment -%} Fallback: try to use color names directly if metaobjects don't exist {%- endcomment -%}
-            {%- unless has_swatch_color -%}
-              {%- assign color_left = left_title | downcase -%}
-              {%- assign color_right = right_title | downcase -%}
-              {%- assign has_swatch_color = true -%}
-            {%- endunless -%}
-
+            {%- assign right_metal = shop.metaobjects['metal'].values | where: 'title', right_title | first -%}
+            {%- if right_metal and right_metal.colour -%}
+              {%- assign color_right = right_metal.colour -%}
+            {%- endif -%}
           {%- else -%}
-            {%- comment -%} Single color handling {%- endcomment -%}
-            {%- if shop.metaobjects.metal -%}
-              {%- assign single_metal = shop.metaobjects.metal.values | where: 'title', sibling_color_value | first -%}
-              {%- if single_metal and single_metal.colour -%}
-                {%- assign color_left = single_metal.colour -%}
-                {%- assign has_swatch_color = true -%}
-              {%- endif -%}
+            {%- assign single_metal = shop.metaobjects['metal'].values | where: 'title', sibling_color_value | first -%}
+            {%- if single_metal and single_metal.colour -%}
+              {%- assign color_left = single_metal.colour -%}
             {%- endif -%}
-
-            {%- comment -%} Fallback: use color name directly if metaobject doesn't exist {%- endcomment -%}
-            {%- unless has_swatch_color -%}
-              {%- assign color_left = sibling_color_value | downcase -%}
-              {%- assign has_swatch_color = true -%}
-            {%- endunless -%}
           {%- endif -%}
 
           <label
-            class="{% if sib_product.handle == product.handle %}active{% endif %}{% if sib_product.available == false %} sold-out{% endif %}"
-            {% if color_left != '' and color_right != '' %}
-              style="background: linear-gradient(135deg, {{ color_left }} 50%, {{ color_right }} 50%);"
-            {% elsif color_left != '' %}
+           class="{% if sib_product.handle == product.handle %}active{% endif %}{% if sib_product.available == false %} sold-out{% endif %}"
+           {% if color_left != '' and color_right != '' %}
+            style="background: linear-gradient(135deg, {{ color_left }} 50%, {{ color_right }} 50%);"
+           {% elsif color_left != '' %}
               style="background-color: {{ color_left }};"
             {% endif %}
-          >
-            <a
-              href="{{ sib_product.url }}"
-              title="{{ sibling_color_value | strip | escape }}"
-              aria-label="{{ sibling_color_value | strip | escape }}"
-              data-swatch-title="{{ sibling_color_value | strip | escape }}"
-            ></a>
-          </label>
+           >
+          <a
+           href="{{ sib_product.url }}"
+           title="{{ sibling_color_value | strip | escape }}"
+           aria-label="{{ sibling_color_value | strip | escape }}"
+           data-swatch-title="{{ sibling_color_value | strip | escape }}"
+          ></a>
+         </label>
         {%- endfor -%}
       </fieldset>
     {%- endif -%}
   </div>
 {%- elsif request.design_mode -%}
-  <div {{ block.shopify_attributes }}>
-    {%- comment -%} Debug information for theme editor {%- endcomment -%}
-    <div style="padding: 10px; background: #f0f0f0; border: 1px solid #ccc; margin: 10px 0;">
-      <strong>Siblings Block Debug:</strong><br>
-<<<<<<< HEAD
-      Collection Handle:
-      {{ block.settings.siblings_collection | default: product.metafields.theme.siblings.value | default: 'Not set' -}}
-      <br>
-      Sibling Color: {{ sibling_color | default: 'Not set' -}}
-      <br>
-      Collection Products: {{ sibs_collection.size | default: 0 -}}
-      <br>
-      Valid Siblings: {{ valid_siblings_count | default: 0 -}}
-      <br>
-      Show Siblings: {{ show_siblings -}}
-      <br>
-=======
-      Collection Handle: {{ collection_handle | default: 'Not set' }}<br>
-      Collection Exists: {{ collections[collection_handle] != blank }}<br>
-      Block Setting: {{ block.settings.siblings_collection | default: 'Not set' }}<br>
-      Metafield siblings: {{ product.metafields.theme.siblings.value | default: 'Not set' }}<br>
-      Metafield sibling_products: {{ product.metafields.theme.sibling_products.value | default: 'Not set' }}<br>
-      Sibling Color: {{ sibling_color | default: 'Not set' }}<br>
-      Collection Products: {{ sibs_collection.size | default: 0 }}<br>
-      Valid Siblings: {{ valid_siblings_count | default: 0 }}<br>
-      Show Siblings: {{ show_siblings }}<br>
->>>>>>> dd074934959a39438390be0753d0fdf2087827c0
-      {%- if sibs_collection.size > 0 -%}
-        Products:
-        {%- for sib in sibs_collection limit: 5 -%}
-          {{ sib.title -}}
-          {%- unless forloop.last %}, {% endunless %}
-        {%- endfor -%}
-        {%- if sibs_collection.size > 5 -%}...{%- endif -%}
-        <br>
-        Product Colors:
-        {%- for sib in sibs_collection limit: 5 -%}
-          {%- assign test_color = sib.metafields.theme.sibling_color.value
-            | default: sib.metafields.theme.sibling_colour.value
-            | default: sib.metafields.theme.siblings_color.value
-            | default: sib.metafields.theme.siblings_colour.value
-            | default: sib.metafields.theme.siblings_colors.value
-            | default: sib.metafields.theme.siblings_colours.value -%}
-          {{ sib.title }}: "{{ test_color | default: 'NO COLOR' }}"{% unless forloop.last %}, {% endunless %}
-        {%- endfor -%}
-      {%- endif -%}
-    </div>
-  </div>
+  <div {{ block.shopify_attributes }}></div>
 {%- endif -%}
