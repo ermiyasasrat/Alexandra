@@ -3,10 +3,17 @@
 
 {%- comment -%} Get siblings collection from block settings or metafields {%- endcomment -%}
 {%- assign sibs_collection = blank -%}
+{%- assign collection_handle = blank -%}
 {%- if block.settings.siblings_collection != blank -%}
-  {%- assign sibs_collection = collections[block.settings.siblings_collection].products -%}
+  {%- assign collection_handle = block.settings.siblings_collection -%}
+  {%- if collections[collection_handle] != blank -%}
+    {%- assign sibs_collection = collections[collection_handle].products -%}
+  {%- endif -%}
 {%- elsif product.metafields.theme.siblings.value != blank -%}
-  {%- assign sibs_collection = collections[product.metafields.theme.siblings.value].products -%}
+  {%- assign collection_handle = product.metafields.theme.siblings.value -%}
+  {%- if collections[collection_handle] != blank -%}
+    {%- assign sibs_collection = collections[collection_handle].products -%}
+  {%- endif -%}
 {%- elsif product.metafields.theme.sibling_products.value != blank -%}
   {%- assign sibs_collection = product.metafields.theme.sibling_products.value -%}
 {%- endif -%}
@@ -21,7 +28,7 @@
   | default: product.metafields.theme.siblings_colours.value -%}
 
 {%- comment -%} Show siblings if we have a collection with products {%- endcomment -%}
-{%- if sibs_collection != blank and sibs_collection.size > 0 -%}
+{%- if collection_handle != blank and collections[collection_handle] != blank and sibs_collection.size > 0 -%}
   {%- comment -%} Count products with valid color metafields {%- endcomment -%}
   {%- assign valid_siblings_count = 0 -%}
   {%- for sib_product in sibs_collection limit: 50 -%}
@@ -36,8 +43,10 @@
     {%- endif -%}
   {%- endfor -%}
   
-  {%- comment -%} Show if we have at least one product with color info {%- endcomment -%}
+  {%- comment -%} Show if we have at least one product with color info, or if in design mode show anyway for debugging {%- endcomment -%}
   {%- if valid_siblings_count > 0 -%}
+    {%- assign show_siblings = true -%}
+  {%- elsif request.design_mode and sibs_collection.size > 0 -%}
     {%- assign show_siblings = true -%}
   {%- endif -%}
 {%- endif -%}
@@ -148,7 +157,11 @@
     {%- comment -%} Debug information for theme editor {%- endcomment -%}
     <div style="padding: 10px; background: #f0f0f0; border: 1px solid #ccc; margin: 10px 0;">
       <strong>Siblings Block Debug:</strong><br>
-      Collection Handle: {{ block.settings.siblings_collection | default: product.metafields.theme.siblings.value | default: 'Not set' }}<br>
+      Collection Handle: {{ collection_handle | default: 'Not set' }}<br>
+      Collection Exists: {{ collections[collection_handle] != blank }}<br>
+      Block Setting: {{ block.settings.siblings_collection | default: 'Not set' }}<br>
+      Metafield siblings: {{ product.metafields.theme.siblings.value | default: 'Not set' }}<br>
+      Metafield sibling_products: {{ product.metafields.theme.sibling_products.value | default: 'Not set' }}<br>
       Sibling Color: {{ sibling_color | default: 'Not set' }}<br>
       Collection Products: {{ sibs_collection.size | default: 0 }}<br>
       Valid Siblings: {{ valid_siblings_count | default: 0 }}<br>
@@ -159,6 +172,17 @@
           {{ sib.title }}{% unless forloop.last %}, {% endunless %}
         {%- endfor -%}
         {%- if sibs_collection.size > 5 -%}...{%- endif -%}
+        <br>
+        Product Colors:
+        {%- for sib in sibs_collection limit: 5 -%}
+          {%- assign test_color = sib.metafields.theme.sibling_color.value
+            | default: sib.metafields.theme.sibling_colour.value
+            | default: sib.metafields.theme.siblings_color.value
+            | default: sib.metafields.theme.siblings_colour.value
+            | default: sib.metafields.theme.siblings_colors.value
+            | default: sib.metafields.theme.siblings_colours.value -%}
+          {{ sib.title }}: "{{ test_color | default: 'NO COLOR' }}"{% unless forloop.last %}, {% endunless %}
+        {%- endfor -%}
       {%- endif -%}
     </div>
   </div>
