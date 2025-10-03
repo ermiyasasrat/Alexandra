@@ -127,7 +127,13 @@
         {%- endfor -%}
       </fieldset>
       
-      {%- if debug_mode and (products_without_color > 0 or products_with_color == 0) -%}
+      {%- assign show_debug = false -%}
+      {%- if debug_mode -%}
+        {%- if products_without_color > 0 or products_with_color == 0 -%}
+          {%- assign show_debug = true -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if show_debug -%}
         <div class="product-siblings-debug" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; margin: 10px 0; border-radius: 3px; color: #856404; font-size: 12px;">
           <strong>⚠️ Siblings Debug Info:</strong><br>
           {%- if products_with_color == 0 -%}
