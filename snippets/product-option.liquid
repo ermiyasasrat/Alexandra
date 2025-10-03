@@ -1,0 +1,315 @@
+{%- liquid
+	if sticky
+		assign appended = '--sticky'
+	endif
+
+	assign handle = option.name | replace: ' ', '-' | downcase | escape
+-%}
+{%- case option_type -%}
+{%- when 'dropdown' -%}
+	<fieldset class="product-form__input product-form__input--dropdown" data-index="option{{ forloop.index }}" data-handle="{{ handle }}">
+		<div class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}{{ appended }}">
+		  {{ option.name }}{{ sizing_link }}
+		</div>
+		<div class="custom-dropdown" data-dropdown-id="{{ section.id }}-{{ forloop.index0 }}{{ appended }}" data-option-index="{{ forloop.index0 }}">
+			<!-- Hidden native select for form submission -->
+			<select
+				id="Option-{{ section.id }}-{{ forloop.index0 }}{{ appended }}"
+				name="options[{{ option.name | escape | append: appended }}]"
+				form="{{ product_form_id }}"
+				class="dropdown-select"
+				aria-hidden="true"
+				style="position: absolute; opacity: 0; width: 0; height: 0;"
+			>
+				{%- for value in option.values -%}
+					<option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+						{{ value }}
+					</option>
+				{%- endfor -%}
+			</select>
+			
+			<!-- Visible trigger showing current selection -->
+			<div class="dropdown-trigger dropdown-closed" role="combobox" aria-expanded="false" aria-controls="dropdown-list-{{ section.id }}-{{ forloop.index0 }}{{ appended }}">
+				{%- liquid
+					assign selected_value = option.selected_value | default: option.values.first
+					assign stone_values = selected_value | split: ' & '
+					assign selected_bg_values = ''
+					for v in stone_values
+						assign v_stripped = v | strip
+						assign stone_handle = v_stripped | handleize
+						assign stone = shop.metaobjects.stone_type[stone_handle]
+						assign bg_value = blank
+						if stone and stone.name == v_stripped
+							if stone.image
+								assign bg_value = stone.image | image_url: width: 20
+							endif
+						endif
+						if bg_value == blank
+							assign all_stones = shop.metaobjects.stone_type.values
+							for s in all_stones
+								assign s_name_stripped = s.name | strip
+								if s_name_stripped == v_stripped and s.image
+									assign bg_value = s.image | image_url: width: 20
+									break
+								endif
+							endfor
+						endif
+						if bg_value != blank
+							assign selected_bg_values = selected_bg_values | append: bg_value | append: ','
+						endif
+					endfor
+					assign selected_bg_values = selected_bg_values | split: ',' | compact
+				-%}
+				<span class="stone-images">
+					{%- for bg_value in selected_bg_values -%}
+						<span class="stone-image" style="background-image: url('{{ bg_value | escape }}'); width: 50%;"></span>
+					{%- endfor -%}
+				</span>
+				<span class="stone-name">{{ selected_value }}</span>
+				<span class="dropdown-arrow-closed">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" stroke-width="10" viewBox="0 0 16 16">
+					  <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+					</svg>
+				</span>
+				<span class="dropdown-arrow-open" style="display: none;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" stroke-width="10" viewBox="0 0 16 16" >
+					  <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
+					</svg>
+				</span>
+			</div>
+			
+			<!-- Dropdown list -->
+			<div class="dropdown-list" id="dropdown-list-{{ section.id }}-{{ forloop.index0 }}{{ appended }}" role="listbox">
+				{%- for value in option.values -%}
+					{%- liquid
+						assign stone_values = value | split: ' & '
+						assign bg_values = ''
+						for v in stone_values
+							assign v_stripped = v | strip
+							assign stone_handle = v_stripped | handleize
+							assign stone = shop.metaobjects.stone_type[stone_handle]
+							assign bg_value = blank
+							if stone and stone.name == v_stripped
+								if stone.image
+									assign bg_value = stone.image | image_url: width: 20
+								endif
+							endif
+							if bg_value == blank
+								assign all_stones = shop.metaobjects.stone_type.values
+								for s in all_stones
+									assign s_name_stripped = s.name | strip
+									if s_name_stripped == v_stripped and s.image
+										assign bg_value = s.image | image_url: width: 20
+										break
+									endif
+								endfor
+							endif
+							if bg_value != blank
+								assign bg_values = bg_values | append: bg_value | append: ','
+							endif
+						endfor
+						assign bg_values = bg_values | split: ',' | compact
+					-%}
+					<div class="dropdown-option" data-value="{{ value | escape }}" role="option" {% if option.selected_value == value or forloop.first and option.selected_value == blank %}class="selected"{% endif %}>
+						<span class="stone-images">
+							{%- for bg_value in bg_values -%}
+								<span class="stone-image" style="background-image: url('{{ bg_value | escape }}'); width: 50%;"></span>
+							{%- endfor -%}
+						</span>
+						<span class="stone-name">{{ value }}</span>
+					</div>
+				{%- endfor -%}
+			</div>
+		</div>
+	</fieldset>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const dropdowns = document.querySelectorAll('.custom-dropdown');
+			dropdowns.forEach(function(dropdown) {
+				const id = dropdown.dataset.dropdownId;
+				const trigger = dropdown.querySelector('.dropdown-trigger');
+				const list = dropdown.querySelector('.dropdown-list');
+				const options = dropdown.querySelectorAll('.dropdown-option');
+				let isOpen = false;
+
+				// Initial sync: Ensure trigger reflects selected or first option
+				const selectedOption = Array.from(options).find(opt => opt.classList.contains('selected')) || options[0];
+				if (selectedOption) {
+					updateTrigger(selectedOption);
+				}
+
+				// Toggle dropdown on trigger click
+				trigger.addEventListener('click', function(e) {
+					e.stopPropagation();
+					isOpen = !isOpen;
+					trigger.classList.toggle('dropdown-closed', !isOpen);
+					trigger.classList.toggle('dropdown-open', isOpen);
+					trigger.setAttribute('aria-expanded', isOpen);
+					list.style.display = isOpen ? 'block' : 'none';
+				});
+
+				// Close on outside click
+				document.addEventListener('click', function(e) {
+					if (!dropdown.contains(e.target) && isOpen) {
+						isOpen = false;
+						trigger.classList.add('dropdown-closed');
+						trigger.classList.remove('dropdown-open');
+						trigger.setAttribute('aria-expanded', 'false');
+						list.style.display = 'none';
+					}
+				});
+
+				// Handle option selection
+				options.forEach(function(option) {
+					option.addEventListener('click', function(e) {
+						e.stopPropagation();
+						const value = this.dataset.value;
+						const select = dropdown.querySelector('.dropdown-select');
+						if (select) {
+							select.value = value;
+							select.dispatchEvent(new Event('change', { bubbles: true }));
+						}
+						updateTrigger(this);
+						options.forEach(opt => opt.classList.remove('selected'));
+						this.classList.add('selected');
+						isOpen = false;
+						trigger.classList.add('dropdown-closed');
+						trigger.classList.remove('dropdown-open');
+						trigger.setAttribute('aria-expanded', 'false');
+						list.style.display = 'none';
+					});
+				});
+
+				function updateTrigger(optionElement) {
+					const stoneImages = optionElement.querySelector('.stone-images');
+					const stoneName = optionElement.querySelector('.stone-name');
+					// Preserve arrows
+					const closedArrow = trigger.querySelector('.dropdown-arrow-closed');
+					const openArrow = trigger.querySelector('.dropdown-arrow-open');
+					trigger.innerHTML = '';
+					if (stoneImages) {
+						trigger.appendChild(stoneImages.cloneNode(true));
+					}
+					if (stoneName) {
+						trigger.appendChild(stoneName.cloneNode(true));
+					}
+					if (closedArrow) {
+						trigger.appendChild(closedArrow.cloneNode(true));
+					}
+					if (openArrow) {
+						trigger.appendChild(openArrow.cloneNode(true));
+					}
+				}
+			});
+		});
+	</script>
+{%- when 'button' -%}
+	<fieldset class="product-form__input product-form__input--block" data-index="option{{ forloop.index }}" data-handle="{{ handle }}">
+		<div class="form__label">{{ option.name }}: <span class="form__label__value">{{ option.selected_value }}</span>{{ sizing_link }}</div>
+		{%- for value in option.values -%}
+			<input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}{{ appended }}"
+						name="{{ option.name | append: appended }}"
+						value="{{ value | escape }}"
+						form="{{ product_form_id }}"
+						{% if option.selected_value == value %}checked{% endif %}
+			>
+			<label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}{{ appended }}">
+				<span>{{ value }}</span>
+			</label>
+		{%- endfor -%}
+	</fieldset>
+{%- when 'color' -%}
+	{%- liquid
+		assign custom_colors = settings.color_swatches | newline_to_br | split: '<br />'
+		assign key_array = ''
+		assign val_array = ''
+
+		for color in custom_colors
+			assign key = color | split: ':' | first | rstrip
+			assign value = color | split: ':' | last | lstrip
+			assign key_array = key_array | append: ',' | append: key
+			assign val_array = val_array | append: ',' | append: value
+		endfor
+
+		assign key_array = key_array | remove_first: ',' | strip_newlines | downcase | split: ','
+		assign val_array = val_array | remove_first: ',' | split: ','
+
+		assign variant_image_size = '40'
+		case color_picker_size
+			when 'large'
+				assign variant_image_size = '72'
+			when 'xlarge'
+				assign variant_image_size = '104'
+		endcase
+	-%}
+	<fieldset class="product-form__input product-form__input--color product-form__input--color--{{ color_picker_size }}" data-use-images="{{ color_picker_use_variants }}" data-index="option{{ forloop.index }}" data-handle="{{ handle }}">
+		<div class="form__label">{{ option.name }}: <span class="form__label__value">{{ option.selected_value }}</span></div>
+		{%- for value in option.values -%}
+			<input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}{{ appended }}"
+						name="{{ option.name | append: appended }}"
+						value="{{ value | escape }}"
+						form="{{ product_form_id }}"
+						{% if option.selected_value == value %}checked{% endif %}
+			>
+			{%- liquid
+				assign color_value = value | downcase | escape
+
+				for custom_color in key_array
+					if custom_color == color_value
+						assign color_value = val_array[forloop.index0]
+					endif
+				endfor
+
+				assign bg_value = empty
+				if color_value contains '.'
+					assign bg_value = color_value | file_url
+					assign color_value = 'var(--bg-body)'
+				endif
+
+				if color_picker_use_variants
+					assign variant_image = blank
+
+					for variant in product.variants
+						if variant.title contains value
+							if variant.image
+								assign bg_value = variant.image | image_url: width: variant_image_size
+								break
+							endif
+						endif
+					endfor
+				endif
+
+				# Improved stone matching: Loop through all metaobjects for exact name match
+				if bg_value == blank
+					assign all_stones = shop.metaobjects.stone_type.values
+					for s in all_stones
+						if s.name == value and s.image
+							assign bg_value = s.image | image_url: width: variant_image_size
+							if s.image.presentation
+								assign swatch_focal_point = s.image.presentation.focal_point
+							endif
+							break
+						endif
+					endfor
+				endif
+
+				if value.swatch.image
+					assign bg_value = value.swatch.image | image_url: width: variant_image_size
+					assign swatch_focal_point = value.swatch.image.presentation.focal_point
+				elsif value.swatch.color
+					assign color_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+				endif
+			-%}
+			<label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}{{ appended }}" style="--option-color: {{ color_value | downcase | escape }}; {%- if bg_value -%}--option-color-image: url('{{ bg_value | escape }}');{%- endif -%}" class="stone-option">
+				{%- assign all_stones = shop.metaobjects.stone_type.values -%}
+				{%- for s in all_stones -%}
+					{%- if s.name == value and s.image -%}
+						<span class="stone-image" style="background-image: url('{{ s.image | image_url: width: variant_image_size | escape }}');"></span>
+						{%- break -%}
+					{%- endif -%}
+				{%- endfor -%}
+				<span class="stone-name">{{ value }}</span>
+			</label>
+		{%- endfor -%}
+	</fieldset>
+{%- endcase -%}
