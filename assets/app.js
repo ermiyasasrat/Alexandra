@@ -224,7 +224,7 @@ if (!customElements.get('product-card')) {
 
         swatch.addEventListener('mouseover', () => {
           [].forEach.call(swatch_list, function (el) {
-            el.classList.remove('active');
+            el.closest('.product-card-swatch-item').classList.remove('active');
           });
           if (image) {
             if (swatch.dataset.srcset) {
@@ -234,10 +234,10 @@ if (!customElements.get('product-card')) {
             }
           }
           if (this.size_options) {
-            this.current_options[this.color_index] = swatch.querySelector('span').innerText;
+            this.current_options[this.color_index] = swatch.querySelector('.product-card-swatch-name').innerText;
             this.updateMasterId();
           }
-          swatch.classList.add('active');
+          swatch.closest('.product-card-swatch-item').classList.add('active');
         });
         swatch.addEventListener('click', function (evt) {
           window.location.href = this.dataset.href;

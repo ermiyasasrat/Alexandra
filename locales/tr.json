@@ -122,6 +122,7 @@
         "one": "{{ count }} renkte mevcut",
         "other": "{{ count }} renkte mevcut"
       },
+      "color_swatch_label": "{{ color }} renk seçeneğini seçin",
       "shipping_policy_html": "<a href=\"{{ link }}\">Kargo</a>, ödeme sayfasında hesaplanır.",
       "quantity": {
         "label": "Adet",

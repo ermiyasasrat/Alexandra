@@ -121,6 +121,7 @@
         "one": "Disponible en {{ count }} color",
         "other": "Disponible en {{ count }} colores"
       },
+      "color_swatch_label": "Seleccionar variante de color {{ color }}",
       "shipping_policy_html": "Los <a href=\"{{ link }}\">gastos de envío<\/a> se calculan en la pantalla de pago.",
       "quantity": {
         "label": "Quantity",

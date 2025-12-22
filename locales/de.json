@@ -121,6 +121,7 @@
         "one": "Erhältlich in {{ count }} Farbe",
         "other": "Erhältlich in {{ count }} Farben"
       },
+      "color_swatch_label": "{{ color }} Farbvariante auswählen",
       "shipping_policy_html": "<a href=\"{{ link }}\">Versand<\/a> wird beim Checkout berechnet",
       "quantity": {
         "label": "Anzahl",

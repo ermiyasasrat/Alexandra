@@ -121,6 +121,7 @@
         "one": "Verkrijgbaar in {{ count }} kleur",
         "other": "Verkrijgbaar in {{ count }} kleuren"
       },
+      "color_swatch_label": "Selecteer {{ color }} kleurvariant",
       "shipping_policy_html": "<a href=\"{{ link }}\">Verzendkosten</a> worden berekend bij de checkout.",
       "quantity": {
         "label": "Aantal",
