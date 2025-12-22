@@ -123,6 +123,7 @@
         "one": "Disponible en {{ count }} couleur",
         "other": "Disponible en {{ count }} couleurs"
       },
+      "color_swatch_label": "Sélectionner la variante de couleur {{ color }}",
       "shipping_policy_html": "<a href=\"{{ link }}\">Frais d'expédition<\/a> calculés à l'étape de paiement.",
       "quantity": {
         "label": "Quantité",
