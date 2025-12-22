@@ -36,7 +36,7 @@
 				-%}
 				{% if option.values.size > 1 %}
 				<div class="product-card-swatches--container no-js-hidden">
-					<ul class="product-card-swatches product-card-swatches--{{ settings.swatch_style }}" data-index="{{ color_index }}" role="list">
+					<ul class="product-card-swatches product-card-swatches--{{ settings.swatch_style }}" data-index="{{ color_index }}" role="radiogroup" aria-label="{{ option.name }}">
 						{%- for value in option.values -%}
 							{%- liquid
 								assign active = ''
@@ -97,10 +97,11 @@
 									assign color_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
 								endif
 							-%}
-							<li class="product-card-swatch-item {{ active }}" role="listitem">
+							<li class="product-card-swatch-item {{ active }}">
 								<button 
 									class="product-card-swatch" 
 									type="button"
+									role="radio"
 									style="--option-color: {{ color_value | downcase | escape }}; {%- if bg_value -%} --option-color-image: url('{{ bg_value | escape }}');{%- endif -%}" 
 									data-srcset="{{- srcset | slice: 0, l | strip_newlines -}}" 
 									data-href="{{ variant_url }}"
