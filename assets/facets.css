@@ -467,6 +467,7 @@
         position: relative; }
       .thb-filter ul.list-color input:disabled + label:after {
         content: "";
+        display: block;
         position: absolute;
         top: 50%;
         left: 12px;
