@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "continue_shopping": "Alışverişe Devam Et",
@@ -122,7 +131,6 @@
         "one": "{{ count }} renkte mevcut",
         "other": "{{ count }} renkte mevcut"
       },
-      "color_swatch_label": "{{ color }} renk seçeneğini seçin",
       "shipping_policy_html": "<a href=\"{{ link }}\">Kargo</a>, ödeme sayfasında hesaplanır.",
       "quantity": {
         "label": "Adet",

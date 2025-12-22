@@ -36,11 +36,10 @@
 				-%}
 				{% if option.values.size > 1 %}
 				<div class="product-card-swatches--container no-js-hidden">
-					<ul class="product-card-swatches product-card-swatches--{{ settings.swatch_style }}" data-index="{{ color_index }}" role="radiogroup" aria-label="{{ option.name }}">
+					<div class="product-card-swatches product-card-swatches--{{ settings.swatch_style }}" data-index="{{ color_index }}">
 						{%- for value in option.values -%}
 							{%- liquid
 								assign active = ''
-								assign is_selected = false
 								assign variant_image = blank
 								assign variant_url = ''
 								assign srcset = ''
@@ -49,7 +48,6 @@
 									if variant.title contains value
 										if variant.image.id and variant.image.id == product.featured_image.id
 											assign active = 'active'
-											assign is_selected = true
 										endif
 										if variant.image
 											assign variant_image = variant.image
@@ -97,22 +95,13 @@
 									assign color_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
 								endif
 							-%}
-							<li class="product-card-swatch-item {{ active }}" role="none">
-								<button 
-									class="product-card-swatch" 
-									type="button"
-									role="radio"
-									style="--option-color: {{ color_value | downcase | escape }}; {%- if bg_value -%} --option-color-image: url('{{ bg_value | escape }}');{%- endif -%}" 
-									data-srcset="{{- srcset | slice: 0, l | strip_newlines -}}" 
-									data-href="{{ variant_url }}"
-									aria-label="{{ 'products.product.color_swatch_label' | t: color: value }}"
-									aria-checked="{{ is_selected }}">
-									<span class="product-card-swatch-circle" aria-hidden="true"></span>
-									<span class="product-card-swatch-name">{{ value }}</span>
-								</button>
-							</li>
+							<div class="product-card-swatch {{ active }}" style="--option-color: {{ color_value | downcase | escape }}; {%- if bg_value -%} --option-color-image: url('{{ bg_value | escape }}');{%- endif -%}" data-srcset="{{- srcset | slice: 0, l | strip_newlines -}}" data-href="{{ variant_url }}">
+								<span class="visually-hidden" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+									{{ value }}
+								</span>
+							</div>
 						{%- endfor -%}
-					</ul>
+					</div>
 					{%- if swatch_style == 'hover' -%}
 						<div class="product-card-swatches--title">{{ 'products.product.available' | t: count: option.values.size }}</div>
 					{%- endif -%}

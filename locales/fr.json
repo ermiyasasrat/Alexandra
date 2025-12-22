@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "continue_shopping": "Continuer vos achats",
@@ -123,7 +132,6 @@
         "one": "Disponible en {{ count }} couleur",
         "other": "Disponible en {{ count }} couleurs"
       },
-      "color_swatch_label": "Sélectionner la variante de couleur {{ color }}",
       "shipping_policy_html": "<a href=\"{{ link }}\">Frais d'expédition<\/a> calculés à l'étape de paiement.",
       "quantity": {
         "label": "Quantité",

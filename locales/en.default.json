@@ -130,7 +130,6 @@
         "one": "Available in {{ count }} color",
         "other": "Available in {{ count }} colors"
       },
-      "color_swatch_label": "Select {{ color }} color variant",
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "quantity": {
         "label": "Quantity",

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "continue_shopping": "继续购物",
@@ -121,7 +130,6 @@
         "one": "提供 {{ count }} 种颜色",
         "other": "提供 {{ count }} 种颜色"
       },
-      "color_swatch_label": "选择{{ color }}颜色变体",
       "shipping_policy_html": "结账时计算的<a href=\"{{ link }}\">运费</a>。",
       "quantity": {
         "label": "数量",

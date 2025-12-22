@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "continue_shopping": "Weiter shoppen",
@@ -121,7 +130,6 @@
         "one": "Erhältlich in {{ count }} Farbe",
         "other": "Erhältlich in {{ count }} Farben"
       },
-      "color_swatch_label": "{{ color }} Farbvariante auswählen",
       "shipping_policy_html": "<a href=\"{{ link }}\">Versand<\/a> wird beim Checkout berechnet",
       "quantity": {
         "label": "Anzahl",
