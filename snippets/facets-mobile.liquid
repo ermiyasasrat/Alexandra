@@ -170,8 +170,11 @@
 																			class="facet-checkbox facet-checkbox--presentation{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}"
 																			style="--bg-color: {{ color_value }}; {%- unless bg_value == empty -%}--option-color-image: url('{{ bg_value }}'){%- endunless -%};"
 																			data-tooltip="{{ value.label | escape }} ({{ value.count }})"
+																			aria-label="{{ value.label | escape }}{% if show_counts %} - {{ value.count }} {{ 'products.facets.product_count_simple' | t: count: value.count }}{% endif %}"
+																			role="checkbox"
+																			aria-checked="{% if value.active %}true{% else %}false{% endif %}"
 																		>
-																			{{ value.label | escape }} {% if show_counts -%}<sup class="count">{{ value.count }}</sup>{%- endif -%}
+																			<span class="facet-checkbox__text">{{ value.label | escape }}</span>{% if show_counts -%}<sup class="count">{{ value.count }}</sup>{%- endif -%}
 																		</label>
 																	{%- else -%}
 																		{%- liquid
@@ -194,8 +197,11 @@
 																			class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %}"
 																			style="--bg-color: {{ color_value | downcase | escape }};{%- if bg_value != blank -%} --option-color-image: url('{{ bg_value | escape }}');{%- endif -%}"
 																			data-tooltip="{{ value.label | escape }} ({{ value.count }})"
+																			aria-label="{{ value.label | escape }}{% if show_counts %} - {{ value.count }} {{ 'products.facets.product_count_simple' | t: count: value.count }}{% endif %}"
+																			role="checkbox"
+																			aria-checked="{% if value.active %}true{% else %}false{% endif %}"
 																		>
-																			{{ value.label | escape }} {% if show_counts %}<span class="count">({{ value.count }})</span>{% endif %}
+																			<span class="facet-checkbox__text">{{ value.label | escape }}</span>{% if show_counts %}<span class="count">({{ value.count }})</span>{% endif %}
 																		</label>
 																	{%- endif -%}
 																</li>

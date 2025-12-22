@@ -445,12 +445,12 @@
 
 .thb-filter ul.list-color {
   display: flex;
-  flex-wrap: wrap;
-  padding: 1px 0 0 1px; }
+  flex-direction: column;
+  gap: 8px;
+  padding: 0; }
   .thb-filter ul.list-color li {
-    display: inline-flex;
-    margin-left: -1px;
-    margin-top: -1px; }
+    display: flex;
+    width: 100%; }
   .thb-filter ul.list-color input {
     clip: rect(0, 0, 0, 0);
     overflow: hidden;
@@ -458,51 +458,65 @@
     height: 1px;
     width: 1px; }
     .thb-filter ul.list-color input:checked + label {
-      z-index: 5;
-      box-shadow: 0 0 0 1px var(--color-body) inset; }
-    .thb-filter ul.list-color input:disabled + label:before {
-      content: ""; }
-    .thb-filter ul.list-color input:disabled + label:after {
-      opacity: 0.4; }
+      border: 1px solid #DBD5C9;
+      background-color: rgba(219, 213, 201, 0.05); }
+    .thb-filter ul.list-color input:disabled + label {
+      cursor: not-allowed;
+      opacity: 0.5; }
+      .thb-filter ul.list-color input:disabled + label:before {
+        position: relative; }
+      .thb-filter ul.list-color input:disabled + label:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        width: 28px;
+        height: 1px;
+        background: var(--color-border);
+        transform: translateY(-50%) rotate(-45deg);
+        pointer-events: none; }
     .thb-filter ul.list-color input:focus-visible + label {
-      transform: scale(0.9);
-      box-shadow: 0 0 0 2px #015ecc inset; }
+      outline: 2px solid #015ecc;
+      outline-offset: 2px; }
   .thb-filter ul.list-color label {
-    width: 48px;
-    height: 48px;
-    display: inline-flex;
-    text-indent: -9999em;
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
     position: relative;
     cursor: pointer;
-    color: transparent;
-    z-index: 4;
-    box-shadow: 0 0 0 1px var(--color-border) inset;
-    position: relative;
-    z-index: 0; }
+    color: var(--color-body);
+    font-size: 0.875rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background-color: transparent;
+    transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1); }
     .thb-filter ul.list-color label:before {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      background: linear-gradient(to bottom left, transparent calc(50% - 1px), var(--color-border), transparent calc(50% + 1px)) no-repeat;
-      z-index: 1; }
-    .thb-filter ul.list-color label:after {
       content: "";
       display: block;
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      background-size: cover;
       background-color: var(--bg-color, "black");
-      background-image: var(--option-color-image); }
-    .thb-filter ul.list-color label:hover:after {
-      transform: scale(0.9); }
+      background-image: var(--option-color-image);
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(var(--color-body-rgb), 0.1);
+      order: -1; }
+    .thb-filter ul.list-color label:after {
+      display: none; }
+    .thb-filter ul.list-color label:hover {
+      border-color: var(--color-body);
+      background-color: rgba(var(--color-body-rgb), 0.02); }
     .thb-filter ul.list-color label:not(.facet-checkbox--disabled):hover {
-      z-index: 1;
-      box-shadow: 0 0 0 1px var(--color-body) inset; }
+      transform: none; }
+    .thb-filter ul.list-color label .count {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: rgba(var(--color-body-rgb), 0.6); }
 
 .thb-filter ul.list--boxed {
   display: grid;
