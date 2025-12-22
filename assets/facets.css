@@ -459,7 +459,6 @@
     width: 1px; }
     .thb-filter ul.list-color input:checked + label {
       border: 1px solid #DBD5C9;
-      border-radius: 4px;
       background-color: rgba(219, 213, 201, 0.05); }
     .thb-filter ul.list-color input:disabled + label {
       cursor: not-allowed;
