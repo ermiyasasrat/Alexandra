@@ -450,7 +450,7 @@
   padding: 0; }
   .thb-filter ul.list-color li {
     display: flex;
-    width: 100%; }
+    width: 190px; }
   .thb-filter ul.list-color input {
     clip: rect(0, 0, 0, 0);
     overflow: hidden;
@@ -459,6 +459,7 @@
     width: 1px; }
     .thb-filter ul.list-color input:checked + label {
       border: 1px solid #DBD5C9;
+      border-radius: 4px;
       background-color: rgba(219, 213, 201, 0.05); }
     .thb-filter ul.list-color input:disabled + label {
       cursor: not-allowed;
@@ -480,7 +481,7 @@
       outline: 2px solid #015ecc;
       outline-offset: 2px; }
   .thb-filter ul.list-color label {
-    width: 100%;
+    width: 190px;
     min-height: 44px;
     display: flex;
     align-items: center;
