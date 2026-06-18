@@ -13,7 +13,7 @@
       "type": "single-image",
       "name": "Single image",
       "settings": {
-        "image": "shopify://shop_images/Bespoke_Banner_2.png",
+        "image": "shopify://shop_images/bespoke-banner.png",
         "full_width": true,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
@@ -32,7 +32,7 @@
         "05722c02-ce4f-461f-a041-3e159cddb760": {
           "type": "text",
           "settings": {
-            "text": "<p>Your bespoke jewellery journey with Alexandra Elizabeth begins with a personal consultation, where we take the time to understand your ideas, style, and inspirations. </p><p>Whether you come with a clear vision for a custom engagement ring or just a sparkle of an idea for something one of a kind to add to your collection we will guide you through the possibilities to create something truly unique.</p><p></p>",
+            "text": "<p>Your bespoke journey with Alexandra Elizabeth begins with a personal consultation, where we take the time to understand your ideas, style, and inspirations. Whether you come with a clear vision or just a sparkle of an idea, we will guide you through the possibilities to create something truly unique.</p>",
             "custom_liquid": "",
             "size": "text-size-regular"
           }
@@ -53,13 +53,13 @@
       ],
       "settings": {
         "section_width": "grid",
-        "text_width": "grid",
+        "text_width": "large",
         "text_position": "center",
         "text_alignment": "center",
         "color_bg": "#ffffff",
         "color_text": "#2c2e35",
         "color_links": "#151515",
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
     },
@@ -85,7 +85,7 @@
         "template--17027745022267__5bad47dd-05dc-464b-9171-7b1563b93a84-1670399999b1d81fbb-2": {
           "type": "text",
           "settings": {
-            "text": "<p>Our designers at Alexandra Elizabeth translate your vision into beautifully detailed sketches, digital renders and ready to cast CAD files. This is where imagination meets artistry and technical expertise, giving you the first glimpse of your jewellery brought to life.</p><p>We listen closely to what you, or the special recipient of the bespoke piece of jewellery, really need from design and the final piece and take the time to translate that into drawings and wax models to help you visualise the end masterpiece. </p>",
+            "text": "<p>Our designers at Alexandra Elizabeth translate your vision into beautifully detailed sketches, digital renders and ready to cast CAD files. This is where imagination meets artistry and technical expertise, giving you the first glimpse of your jewellery brought to life.</p>",
             "description_size": "medium"
           }
         }
@@ -95,7 +95,7 @@
         "template--17027745022267__5bad47dd-05dc-464b-9171-7b1563b93a84-1670399999b1d81fbb-2"
       ],
       "settings": {
-        "image": "shopify://shop_images/Alex_Designing_1.png",
+        "image": "shopify://shop_images/WhatsApp_Image_2025-09-18_at_11.12.43.jpg",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
@@ -106,7 +106,7 @@
         "layout": "image_first",
         "content_position": "text-left",
         "color_bg": "#2c2e35",
-        "color_text": "#ffffff",
+        "color_text": "#dbd5c9",
         "color_border": "#e2e2e2",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
@@ -125,7 +125,7 @@
         "template--17027745022267__9b5d80c3-a712-486c-be14-8ed726a999d7-1670399999b1d81fbb-2": {
           "type": "text",
           "settings": {
-            "text": "<p>Working closely with you, Alexandra Elizabeth refines your design. Every detail is considered, from stone shapes to subtle curves, ensuring the piece feels exactly right.</p><p>Taking careful measurements our in house CAD designers generate a detailed design which allows us to accurately price and show you all angles of your final piece. We then render the drawings so you can clearly see how the final item will look. </p><p></p>",
+            "text": "<p>Working closely with you, Alexandra Elizabeth refines your design. Every detail is considered, from stone shapes to subtle curves, ensuring the piece feels exactly right.</p>",
             "description_size": "medium"
           }
         }
@@ -135,7 +135,7 @@
         "template--17027745022267__9b5d80c3-a712-486c-be14-8ed726a999d7-1670399999b1d81fbb-2"
       ],
       "settings": {
-        "image": "shopify://shop_images/EM001_Design.jpg",
+        "image": "shopify://shop_images/WhatsApp_Image_2025-09-18_at_11.13.48.jpg",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
@@ -165,7 +165,7 @@
         "text_zTwcPn": {
           "type": "text",
           "settings": {
-            "text": "<p>At Alexandra Elizabeth, we carefully source ethical gemstones and fine metals, selected for their beauty and their integrity.  </p><p>Alexandra herself is a GIA qualified gemologist and takes the time to source stones that fit your design perfectly.</p><p>You’ll be involved in choosing the stones that most resonate with you, making your piece even more personal.</p>",
+            "text": "<p>At Alexandra Elizabeth, we carefully source ethical gemstones and fine metals, selected for their beauty and their integrity. You’ll be involved in choosing the stones that most resonate with you, making your piece even more personal.</p>",
             "description_size": "medium"
           }
         }
@@ -175,7 +175,7 @@
         "text_zTwcPn"
       ],
       "settings": {
-        "image": "shopify://shop_images/Loose_Gemstones.png",
+        "image": "shopify://shop_images/WhatsApp_Image_2025-09-18_at_11.12.43_copy.jpg",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
@@ -186,7 +186,7 @@
         "layout": "image_first",
         "content_position": "text-left",
         "color_bg": "#2c2e35",
-        "color_text": "#ffffff",
+        "color_text": "#dbd5c9",
         "color_border": "#e2e2e2",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
@@ -205,7 +205,7 @@
         "text_6afDL3": {
           "type": "text",
           "settings": {
-            "text": "<p>Our skilled artisans bring your design to life with precision and passion. Using time-honoured techniques alongside modern innovations, your piece is handcrafted with the utmost care and attention to detail.</p><p>Each component is refined and perfected throughout the process, by hand and here in the UK. We quality check each item of jewellery at every stage ensuring that there are no faults or flaws. </p><p>This results in a truly unique piece that not only reflects exceptional craftsmanship but also captures the personal meaning and sentiment behind your bespoke piece of jewellery.<br/><br/> <br/></p>",
+            "text": "<p>Our skilled artisans bring your design to life with precision and passion. Using time-honoured techniques alongside modern innovations, your piece is handcrafted with the utmost care and attention to detail.</p>",
             "description_size": "medium"
           }
         }
@@ -216,9 +216,8 @@
       ],
       "settings": {
         "image": "shopify://shop_images/gemstone.png",
-        "use_video": true,
+        "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_hosted": "shopify://files/videos/Pete & Charlie Vid.mp4",
         "video_autoplay": true,
         "video_controls": true,
         "height": "adapt",
@@ -246,7 +245,7 @@
         "text_Rat4fW": {
           "type": "text",
           "settings": {
-            "text": "<p>Every bespoke piece created is meticulously polished, set, and inspected to the highest standards. </p><p>Hallmarked in Birmingham with the Alexandra Elizabeth makers mark and logo, date and finesse stamped, you can be assured that your piece is exactly what you wanted it to be. </p><p>The final result is a flawless creation, ready to become part of you or your loved ones story. Something you can treasure for a lifetime. </p>",
+            "text": "<p>Every bespoke piece created is meticulously polished, set, and inspected to the highest standards. The final result is a flawless creation, ready to become part of your story.</p>",
             "description_size": "medium"
           }
         }
@@ -256,10 +255,9 @@
         "text_Rat4fW"
       ],
       "settings": {
-        "image": "shopify://shop_images/Packaging.png",
-        "use_video": true,
+        "image": "shopify://shop_images/wedding-ring-buffing-and-shaping.jpg",
+        "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_hosted": "shopify://files/videos/Eleanor Platinum Vid.mp4",
         "video_autoplay": true,
         "video_controls": true,
         "height": "adapt",
@@ -268,7 +266,7 @@
         "layout": "image_first",
         "content_position": "text-left",
         "color_bg": "#2c2e35",
-        "color_text": "#ffffff",
+        "color_text": "#dbd5c9",
         "color_border": "#e2e2e2",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
@@ -287,7 +285,7 @@
         "text_9TtyNV": {
           "type": "text",
           "settings": {
-            "text": "<p>We send photos and videos of the piece to you as a record of journey, keeping you updated as much or as little as you need. </p><p>When the design comes to life, we try wherever possible to hand deliver the jewellery to you. Nothing brings Alexandra more pleasure than seeing the reveal of something so personal and important. </p><p>This moment is the culmination of your creative journey — a jewel designed by you, for yourself or a loved one, and destined to become part of your legacy.</p><p></p>",
+            "text": "<p>Your bespoke piece is presented by Alexandra Elizabeth in luxury packaging, ready to be treasured. This moment is the culmination of your creative journey — a jewel designed by you, for yourself or a loved one, and destined to become part of your legacy.</p>",
             "description_size": "medium"
           }
         }
@@ -297,7 +295,7 @@
         "text_9TtyNV"
       ],
       "settings": {
-        "image": "shopify://shop_images/charlie_with_logo.png",
+        "image": "shopify://shop_images/fleur-ring.png",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
@@ -327,7 +325,7 @@
         "text_Tt3gYq": {
           "type": "text",
           "settings": {
-            "text": "<p>With the Alexandra Elizabeth Lifetime Promise, our relationship doesn’t end once you take your piece home. </p><p>We provide ongoing care, cleaning, and maintenance to ensure your jewellery continues to shine for generations to come.</p><p></p>",
+            "text": "<p>With the Alexandra Elizabeth Lifetime Promise, our relationship doesn’t end once you take your piece home. We provide ongoing care, cleaning, and maintenance to ensure your jewellery continues to shine for generations to come.</p>",
             "description_size": "medium"
           }
         }
@@ -337,7 +335,7 @@
         "text_Tt3gYq"
       ],
       "settings": {
-        "image": "shopify://shop_images/packaging_2.png",
+        "image": "shopify://shop_images/Collections.png",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
@@ -348,7 +346,7 @@
         "layout": "image_first",
         "content_position": "text-left",
         "color_bg": "#2c2e35",
-        "color_text": "#ffffff",
+        "color_text": "#dbd5c9",
         "color_border": "#e2e2e2",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true

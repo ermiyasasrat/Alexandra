@@ -182,11 +182,11 @@
         "display_type": "grid",
         "product_limit": 12,
         "columns_desktop": 4,
-        "show_view_all": false,
+        "show_view_all": true,
         "mobile_swipe": true,
         "show_progress_bar": false,
         "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "rich_text_Hpe3Ry": {

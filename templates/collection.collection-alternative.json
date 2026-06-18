@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main-collection-banner": {
@@ -8,6 +17,8 @@
         "show_collection_description": true,
         "show_subcollections": true,
         "make_heading_uppercase": true,
+        "text_alignment": "center",
+        "image": "shopify://shop_images/Collections_Hero_Banner.png",
         "overlay_color": "#000000",
         "overlay_opacity": 40
       }
@@ -15,40 +26,36 @@
     "image_with_text_overlay_6fee8J": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_pdJPYa": {
-          "type": "subheading",
-          "settings": {
-            "text": "Effortless grace"
-          }
-        },
         "heading_ACqjD6": {
           "type": "heading",
           "settings": {
-            "text": "The Art of Casual Sophistication",
-            "heading_size": "h1-large"
+            "text": "Collections",
+            "heading_size": "h1"
           }
         },
         "text_c6hB4W": {
           "type": "text",
           "settings": {
-            "text": "<p>The focus is on timeless wardrobe essentials: neutral tones, clean lines, and versatile pieces that transition seamlessly from day to night.</p>",
+            "text": "<p>The Alexandra Elizabeth Collections are thoughtfully designed to celebrate life's most meaningful moments through jewellery that is both beautiful and deeply personal. Created to be worn every day or treasured for special occasions, each collection tells its own story while offering pieces that can be purchased individually or built into a complete suite over time.</p>",
             "description_size": "small"
           }
         }
       },
       "block_order": [
-        "subheading_pdJPYa",
         "heading_ACqjD6",
         "text_c6hB4W"
       ],
       "settings": {
         "section_width": "full-width-row-full",
-        "image_parallax": true,
+        "image": "shopify://shop_images/Collections_Hero_Banner.png",
+        "mobile_image": "shopify://shop_images/Collections_Hero_Banner.png",
+        "image_parallax": false,
         "desktop_height": "desktop-height-550",
         "mobile_height": "mobile-height-500",
         "content_width": "medium",
         "content_position": "middle-left",
         "text_alignment": "left",
+        "overlay_color": "#000000",
         "overlay_opacity": 0,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
@@ -69,48 +76,56 @@
         "image_TAdUit": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Alexandra-Elizabeth_Jess-Matteo_Joanne-Crawford_High-res-4_eaf159b9-e6bd-4032-ae25-0a538c1bc6af.jpg",
             "subheading": "",
-            "title": "Dresses",
+            "title": " La Bayadère",
             "text": "",
             "link_label": "",
-            "link": "",
+            "link": "shopify://collections/la-bayadere",
             "use_text_button": false,
+            "block_link": "shopify://collections/la-bayadere",
             "product_list": []
           }
         },
         "image_mB77W6": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Alexandra-Elizabeth_Jess-Matteo_Joanne-Crawford_High-res-112.jpg",
             "subheading": "",
-            "title": "Bottoms",
+            "title": "Coppélia",
             "text": "",
             "link_label": "",
-            "link": "",
+            "link": "shopify://collections/coppelia",
             "use_text_button": false,
-            "product_list": []
-          }
-        },
-        "image_VPtJLM": {
-          "type": "image",
-          "settings": {
-            "subheading": "",
-            "title": "Sweaters",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
+            "block_link": "shopify://collections/coppelia",
             "product_list": []
           }
         },
         "image_UXhywW": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Alexandra-Elizabeth_Jess-Matteo_Joanne-Crawford_High-res-94.jpg",
             "subheading": "",
-            "title": "Denim",
+            "title": "La Fille Mal Gardée",
             "text": "",
             "link_label": "",
-            "link": "",
+            "link": "shopify://collections/la-fille-mal-gardee",
             "use_text_button": false,
+            "block_link": "shopify://collections/la-fille-mal-gardee",
+            "product_list": []
+          }
+        },
+        "image_VPtJLM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Alexandra-Elizabeth_Jess-Matteo_Joanne-Crawford_High-res-155.jpg",
+            "subheading": "",
+            "title": "Giselle",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://collections/giselle",
+            "use_text_button": false,
+            "block_link": "shopify://collections/giselle",
             "product_list": []
           }
         }
@@ -118,8 +133,8 @@
       "block_order": [
         "image_TAdUit",
         "image_mB77W6",
-        "image_VPtJLM",
-        "image_UXhywW"
+        "image_UXhywW",
+        "image_VPtJLM"
       ],
       "settings": {
         "columns_desktop": 4,
@@ -156,7 +171,9 @@
         "enable_sorting": true,
         "show_counts": true,
         "filter_color_swatches": true,
-        "facets_desktop": "drawer"
+        "facets_desktop": "drawer",
+        "sidebar_size": "medium",
+        "box_filter_list": ""
       }
     }
   },

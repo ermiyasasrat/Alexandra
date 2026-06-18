@@ -474,16 +474,54 @@
     "1662459246bd099bb7": {
       "type": "spacer",
       "settings": {
-        "spacer_mobile": 15,
+        "spacer_mobile": 5,
         "spacer_desktop": 0,
         "border_separator": true,
         "border_separator_full": true
       }
     },
-    "17641592602d5f9782": {
-      "type": "apps",
+    "testimonials_jrWpyA": {
+      "type": "testimonials",
+      "blocks": {
+        "quote_KQUqXw": {
+          "type": "quote",
+          "settings": {
+            "stars": "",
+            "text": "Thank you again Alexandra, never thought I'd get exactly the right thing after months of searching around before meeting you. Your passion for making every piece special and representative of the love they symbolise, shines through in your approach - the results speak for themselves.",
+            "author": "Pete & Charlie, Yorkshire"
+          }
+        },
+        "quote_agKFLC": {
+          "type": "quote",
+          "settings": {
+            "stars": "",
+            "text": "From start to finish the experience has been second to none.\nI felt listened to on what I was looking for and how I wanted the redesign to look. Amazing communication and couldn’t fault the 2 rings I received, Alex even made sure finishes on the metal was as we wanted. A eye for detail the whole way through - would highly recommend.",
+            "author": "Ellie, Yorkshire"
+          }
+        },
+        "quote_VUpmNR": {
+          "type": "quote",
+          "settings": {
+            "stars": "",
+            "text": "I purchased the Fleur earrings from Alexandra Elizabeth and I couldn't be happier with the quality and look of the design, as well as the flexibility of adding the drop element to the studs. This truly stunning jewellery and I am looking forward to adding to my collection with more from the range.",
+            "author": "Olivia, Hertfordshire"
+          }
+        }
+      },
+      "block_order": [
+        "quote_KQUqXw",
+        "quote_agKFLC",
+        "quote_VUpmNR"
+      ],
+      "name": "Testimonials",
       "settings": {
-        "section_width": "full-width-row",
+        "full_width": true,
+        "text_size": "small",
+        "pagination": "dots",
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "transparent",
+        "color_text": "#151515",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -501,6 +539,6 @@
     "rich_text_EdHE4F",
     "1756897111f38556ca",
     "1662459246bd099bb7",
-    "17641592602d5f9782"
+    "testimonials_jrWpyA"
   ]
 }

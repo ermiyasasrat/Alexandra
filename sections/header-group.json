@@ -14,6 +14,14 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "text_FUmTkR": {
+          "type": "text",
+          "settings": {
+            "icon": "none",
+            "text": "Named after one of ballet's most celebrated and enduring productions, La Bayadère is a tribute to a life shaped by artistry, dedication, and an unwavering passion for dance. Created in collaboration with renowned ballet dancer and teacher Jessica Matteo, this exquisite collection captures the beauty of a career that has spanned continents, inspired generations, and left an indelible legacy within the world of ballet.A graceful arrangement of pear-shaped laboratory diamonds flows around the neckline like dancers moving in perfect harmony across a stage. The soft green laboratory diamonds symbolise growth, wisdom, and the countless students nurtured throughout Jessica's teaching journey, while the rich brown tones represent treasured memories, friendships, and experiences gathered from a lifetime of performing and travelling the world. Finally the warm champagne laboratory diamonds reflect moments of achievement, excellence, and the enduring light of a dancer's spirit.The flowing composition mirrors the elegance and movement of choreography itself, with each stone representing a chapter in an extraordinary story. From prestigious theatres and international performances to the studios where future generations have been encouraged to dream, every element speaks of a life devoted to sharing the transformative power of dance.Inspired by the iconic \"Kingdom of the Shades\" scene from La Bayadère, where dancers appear in a seemingly endless line of perfect harmony, the necklace reflects the lasting influence of a teacher whose guidance continues long after the final curtain falls. Each stone stands individually beautiful, yet together they create something far greater—just as every student, colleague, friend, and family member forms part of Jessica's remarkable journey.La Bayadère is more than a collection; it is a celebration of artistry, mentorship, adventure, and legacy. A timeless piece that honours not only a distinguished ballet career, but the countless lives touched, inspired, and transformed along the way.",
+            "link": ""
+          }
+        },
         "5b1ab378-833d-4a94-a02e-8325ec1551d0": {
           "type": "text",
           "settings": {
@@ -33,6 +41,7 @@
         }
       },
       "block_order": [
+        "text_FUmTkR",
         "5b1ab378-833d-4a94-a02e-8325ec1551d0",
         "2f7893ee-7b84-4f15-911a-801b94ffa38e"
       ],
@@ -50,14 +59,13 @@
     "header": {
       "type": "header",
       "blocks": {
-        "megamenu_QQmAJU": {
+        "megamenu_n8p7mJ": {
           "type": "megamenu",
           "settings": {
             "position": "1",
-            "promo_1_image": "shopify://shop_images/wave-ring.png",
-            "promo_1_heading": "CLARA COLLECTION",
-            "promo_1_link_label": "Discover the range",
-            "promo_1_link": "shopify://collections/clara",
+            "promo_1_heading": "Promotion heading",
+            "promo_1_link_label": "Shop",
+            "promo_1_link": "",
             "promo_2_heading": "Promotion heading",
             "promo_2_link_label": "Shop",
             "promo_2_link": "",
@@ -89,7 +97,7 @@
         }
       },
       "block_order": [
-        "megamenu_QQmAJU",
+        "megamenu_n8p7mJ",
         "megamenu_sidebar_dpULWw",
         "megamenu_sidebar_FcWLMH"
       ],

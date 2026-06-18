@@ -1,0 +1,329 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_overlay_YL3mX7": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_xjBiRz": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ page.title }}",
+            "heading_size": "h1-xlarge"
+          }
+        },
+        "button_yMRULp": {
+          "type": "button",
+          "settings": {
+            "button_text": "Book a consultation",
+            "button_link": "shopify://pages/book-a-consultation",
+            "button_outline": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_xjBiRz",
+        "button_yMRULp"
+      ],
+      "settings": {
+        "section_width": "full-width-row-full",
+        "image": "shopify://shop_images/HOCKLEYMINT_SHOT8_003.jpg",
+        "image_parallax": false,
+        "desktop_height": "desktop-height-550",
+        "mobile_height": "mobile-height-500",
+        "content_width": "medium",
+        "content_position": "middle-center",
+        "text_alignment": "center",
+        "overlay_color": "#2c2e35",
+        "overlay_opacity": 20,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": true,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "image_with_text_x6Wwri": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_9PY7iL": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_DGA6M8": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "heading_size": "h3"
+          }
+        },
+        "text_C9DXbL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wedding rings are cherished for their timeless elegance and symbolic simplicity. At Alexandra Elizabeth we work closely with you to find the perfect wedding rings that represent the love and life that you and your partner are living. <br/></p><p>Book an appointment to discuss your dream rings and let us be  a part of your love story. </p>",
+            "description_size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_9PY7iL",
+        "heading_DGA6M8",
+        "text_C9DXbL"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify://shop_images/AE_Plain_Stack.png",
+        "use_video": true,
+        "video": "",
+        "video_hosted": "shopify://files/videos/AE Plain animation.mp4",
+        "video_autoplay": true,
+        "video_controls": true,
+        "height": "large",
+        "desktop_image_width": "medium",
+        "section_width": "grid",
+        "layout": "image_first",
+        "content_position": "text-left",
+        "color_bg": "#ffffff",
+        "color_text": "#151515",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "multicolumn_3tTtYH": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_nVbzKF": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "The Fit",
+            "text": "<p>Choosing the fit for your ring is crucial, think about how you are wearing it and what you are wearing it with. </p><p>Do you need a court band, something more modern such as a flat top and how heavy do you need it to be? </p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_freKzr": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "The Style",
+            "text": "<p>There are so many styles of wedding rings, but starting with the right base is key. </p><p>Are you keeping is simple and going for a seamless plain band, or are you looking for something with a bit of glitter and adding some diamonds or gemstones in. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_J4JtgN": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "The Shape",
+            "text": "<p>For most gents rings a straight band is all that is needed, however for those who are fitting a wedding ring next to an engagement ring you may well need a shaped band. </p><p>We work closely with you to find  a pre made fit or bespoke a peice which fits perfectly to your exisiting ring. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_XJ6XU3": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "retina": true,
+            "title": "The Finish",
+            "text": "<p>The final piece of the puzzle is deciding the finish of your ring. Are you looking for a high polish or would you prefer a softer satin touch. </p><p>You might even want some patterns across your piece with some mixed metals to highlight the design. We can finish your ring and add some personalisation via engraving if that is what you like. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_nVbzKF",
+        "column_freKzr",
+        "column_J4JtgN",
+        "column_XJ6XU3"
+      ],
+      "name": "Multicolumn",
+      "settings": {
+        "heading": "Wedding Ring Styles",
+        "heading_left": false,
+        "description": "<p>Find your perfect ring by following our step by step guide</p>",
+        "full_width": false,
+        "display_type": "grid",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "text_alignment": "left",
+        "heading_size": "h5",
+        "mobile_swipe": false,
+        "show_progress_bar": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "gallery_m4JFWF": {
+      "type": "gallery",
+      "blocks": {
+        "image_mKGt4h": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AE_Finishes_Stack.png",
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        },
+        "image_CnhBGW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AE_Dia_Stack.png",
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        },
+        "image_iyr9nY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AE_Shaped_Stack.png",
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        },
+        "image_EHKA7J": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AE_Dia_Mixed_Metal_Stack.png",
+            "subheading": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "product_list": []
+          }
+        }
+      },
+      "block_order": [
+        "image_mKGt4h",
+        "image_CnhBGW",
+        "image_iyr9nY",
+        "image_EHKA7J"
+      ],
+      "name": "Gallery",
+      "settings": {
+        "columns_desktop": 4,
+        "section_width": "grid",
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "content_position": "bottom-left",
+        "text_alignment": "left",
+        "column_spacing": "small",
+        "heading_size": "h2",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "rich_text_NGgnfn": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_eeM9Tc": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading for this section"
+          }
+        },
+        "heading_7yETnw": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Talk about your brand",
+            "size": "h3"
+          }
+        },
+        "text_9jUp3z": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        },
+        "button_GQHWD4": {
+          "type": "button",
+          "settings": {
+            "link_label": "Book a consultation",
+            "link": "shopify://pages/book-a-consultation",
+            "button_outline": false
+          }
+        }
+      },
+      "block_order": [
+        "subheading_eeM9Tc",
+        "heading_7yETnw",
+        "text_9jUp3z",
+        "button_GQHWD4"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "section_width": "grid",
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_YL3mX7",
+    "main",
+    "image_with_text_x6Wwri",
+    "multicolumn_3tTtYH",
+    "gallery_m4JFWF",
+    "rich_text_NGgnfn"
+  ]
+}

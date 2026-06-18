@@ -96,15 +96,6 @@
             "block_heading": "Complete the Look",
             "product_list_limit": 10
           }
-        },
-        "image_qQEYH7": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/customise-this-piece.png",
-            "position": "text-center",
-            "image_link": ""
-          }
         }
       },
       "block_order": [
@@ -115,8 +106,7 @@
         "variant_picker",
         "buy_buttons",
         "95b7e00a-0453-4eb0-9cf0-1dae84d8b822",
-        "complementary_fJGXCX",
-        "image_qQEYH7"
+        "complementary_fJGXCX"
       ],
       "settings": {
         "full_width": true,

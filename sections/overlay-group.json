@@ -11,45 +11,55 @@
   "type": "custom.overlay",
   "name": "Overlay group",
   "sections": {
-    "overlay_popup_rTHVea": {
+    "overlay_popup_4hR686": {
       "type": "overlay-popup",
       "blocks": {
-        "heading_XGKkgF": {
+        "heading_yJrN4c": {
           "type": "heading",
           "settings": {
-            "text": "Sign up to our newsletter",
+            "text": "Stay close to Alexandra Elizabeth",
             "heading_size": "h2"
           }
         },
-        "text_Y9ieUX": {
+        "text_hCzaME": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>Discover new collections, the inspirations behind our designs, and exclusive invitations to events. </p>",
             "description_size": "medium"
           }
         },
-        "email_signup_9iP7Bn": {
+        "email_signup_PXBrzC": {
           "type": "email-signup",
           "settings": {}
+        },
+        "button_PeW4DW": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_text": "Shop Now",
+            "button_link": "",
+            "button_outline": false
+          }
         }
       },
       "block_order": [
-        "heading_XGKkgF",
-        "text_Y9ieUX",
-        "email_signup_9iP7Bn"
+        "heading_yJrN4c",
+        "text_hCzaME",
+        "email_signup_PXBrzC",
+        "button_PeW4DW"
       ],
-      "disabled": true,
+      "name": "Pop-up",
       "settings": {
         "popup_delay": 7,
         "disable_for_accounts": true,
         "show_on_specific_page": false,
         "specific_page": "",
         "popup_position": "center",
-        "text_alignment": "left"
+        "text_alignment": "center"
       }
     }
   },
   "order": [
-    "overlay_popup_rTHVea"
+    "overlay_popup_4hR686"
   ]
 }
