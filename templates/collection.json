@@ -13,7 +13,7 @@
       "type": "main-collection-banner",
       "settings": {
         "show_collection_image": true,
-        "show_collection_description": true,
+        "show_collection_description": false,
         "show_subcollections": true,
         "make_heading_uppercase": false,
         "text_alignment": "left",
@@ -21,20 +21,77 @@
         "overlay_opacity": 10
       }
     },
+    "image_with_text_Jibx9p": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_tWn8iL": {
+          "type": "text",
+          "settings": {
+            "text": "<p><br/>At Alexandra Elizabeth, our High Jewellery collection represents the pinnacle of craftsmanship, creativity, and rarity. Each masterpiece is meticulously designed around exceptional gemstones and handcrafted in precious metals, combining timeless elegance with contemporary artistry. Created in limited numbers or as one-of-a-kind commissions, every piece is a celebration of individuality, destined to become a treasured heirloom passed from one generation to the next. Designed to be worn, admired, and remembered, our High Jewellery embodies luxury in its purest form.<br/><br/></p>",
+            "description_size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "text_tWn8iL"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify://shop_images/mOrganite_1.jpg",
+        "use_video": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/website-desktop.mp4",
+        "video_autoplay": true,
+        "video_controls": true,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "section_width": "grid",
+        "layout": "image_first",
+        "content_position": "text-left",
+        "color_bg": "#ffffff",
+        "color_text": "#151515",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "rich_text_eRzYVK": {
+      "type": "rich-text",
+      "name": "Rich text",
+      "settings": {
+        "section_width": "grid",
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_text": "#151515",
+        "color_links": "#151515",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "spacer_LAreRr": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 40,
+        "spacer_desktop": 50,
+        "border_separator": true,
+        "border_separator_full": true
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "blocks": {
         "2eb8e6da-98ad-442c-b31e-fcc9bc0532b9": {
           "type": "promotion",
-          "disabled": true,
           "settings": {
             "promotion_collection": "",
             "promotion_position": 5,
             "promotion_width": "2",
-            "image": "shopify://shop_images/Silver_and_gold_star_bracelet.webp",
-            "title": "PROMOTION BANNER",
-            "text": "Add your description text for promotion banner here.",
-            "link_label": "Discover",
+            "image": "shopify://shop_images/RTTR-1928-FGD_a.jpg",
+            "title": "Collectors Desires",
+            "text": "Unique one of a kind pieces designed to illuminate a jewllery collectors legacy.",
+            "link_label": "",
             "link": "",
             "use_text_button": true,
             "block_link": "",
@@ -51,7 +108,7 @@
       "settings": {
         "full_width": true,
         "products_per_page": 24,
-        "columns_desktop": 4,
+        "columns_desktop": 3,
         "pagination_type": "infinite",
         "enable_filtering": true,
         "enable_sorting": true,
@@ -122,7 +179,7 @@
         "color_bg": "rgba(0,0,0,0)",
         "color_text": "#384135",
         "color_links": "#151515",
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
     },
@@ -213,7 +270,7 @@
         "color_text": "#384135",
         "color_links": "#151515",
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "166367228131c52c01": {
@@ -224,16 +281,51 @@
         "border_separator": false,
         "border_separator_full": false
       }
+    },
+    "17834508550b0bd5aa": {
+      "type": "apps",
+      "blocks": {
+        "instareel_ig_reels_instagram_reels_feed_888Bkh": {
+          "type": "shopify://apps/instareel-ig-reels/blocks/instagram-reels-feed/6399ee9c-54c8-4f76-97d7-8f02f7662aa1",
+          "settings": {
+            "playlist_id": "",
+            "hide_when_no_product_playlist": false,
+            "show_background": false,
+            "background_color": "#ffffff",
+            "customize_text": false,
+            "heading_font_size": 28,
+            "heading_color": "#000000",
+            "subheading_font_size": 16,
+            "subheading_color": "#000000",
+            "customize_spacing": false,
+            "padding_top": 0,
+            "padding_bottom": 16,
+            "padding_horizontal": 0
+          }
+        }
+      },
+      "block_order": [
+        "instareel_ig_reels_instagram_reels_feed_888Bkh"
+      ],
+      "settings": {
+        "section_width": "full-width-row",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
     }
   },
   "order": [
     "main-collection-banner",
+    "image_with_text_Jibx9p",
+    "rich_text_eRzYVK",
+    "spacer_LAreRr",
     "product-grid",
     "166366972953e881f5",
     "16636704759cbf64c5",
     "rich_text_GeqzMz",
     "text_with_icons_e4eKmc",
     "rich_text_NAX8kY",
-    "166367228131c52c01"
+    "166367228131c52c01",
+    "17834508550b0bd5aa"
   ]
 }

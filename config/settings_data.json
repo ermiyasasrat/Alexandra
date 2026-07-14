@@ -48,7 +48,8 @@
     "product_content_alignment": "left",
     "product_aspect_ratio": "square",
     "products_hover_images_count": 2,
-    "enable_quick_view": false,
+    "enable_quick_add": false,
+    "enable_quick_view": true,
     "show_products_vendor": false,
     "show_products_swatches": false,
     "swatch_style": "hover",
@@ -208,6 +209,11 @@
     "blocks": {
       "2567389343055140935": {
         "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "14494032640169117832": {
+        "type": "shopify://apps/instagram-shop-ai/blocks/app-embed/8af8f5ee-21cb-48a3-80e7-13a99e2519b5",
         "disabled": false,
         "settings": {}
       }

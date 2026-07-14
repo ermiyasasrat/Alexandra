@@ -450,7 +450,7 @@
         "color_bg": "rgba(0,0,0,0)",
         "color_text": "#151515",
         "color_links": "#151515",
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
     },
@@ -459,7 +459,21 @@
       "blocks": {
         "instareel_ig_reels_instagram_reels_feed_UWD6D6": {
           "type": "shopify://apps/instareel-ig-reels/blocks/instagram-reels-feed/6399ee9c-54c8-4f76-97d7-8f02f7662aa1",
-          "settings": {}
+          "settings": {
+            "playlist_id": "",
+            "hide_when_no_product_playlist": false,
+            "show_background": false,
+            "background_color": "#ffffff",
+            "customize_text": false,
+            "heading_font_size": 28,
+            "heading_color": "#000000",
+            "subheading_font_size": 16,
+            "subheading_color": "#000000",
+            "customize_spacing": false,
+            "padding_top": 0,
+            "padding_bottom": 16,
+            "padding_horizontal": 0
+          }
         }
       },
       "block_order": [
@@ -520,10 +534,10 @@
         "pagination": "dots",
         "autoplay": true,
         "autoplay_length": 5,
-        "color_bg": "transparent",
+        "color_bg": "rgba(0,0,0,0)",
         "color_text": "#151515",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
       }
     }
   },
